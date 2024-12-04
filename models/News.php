@@ -32,12 +32,7 @@ class News {
         return $stmt->fetchAll();
     }
 
-//    public static function create($title, $content, $image, $category_id) {
-//        $db = Database::connect();
-//        $stmt = $db->prepare("INSERT INTO news (title, content, image, category_id) VALUES (?, ?, ?, ?)");
-//        return $stmt->execute([$title, $content, $image, $category_id]);
-//    }
-//
+
     public static function delete($id) {
         $db = Database::connect();
         $query = "DELETE FROM news WHERE id = :id";
