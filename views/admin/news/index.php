@@ -51,7 +51,7 @@ $newsList = News::getAll();
                 <td><?= $news['category_name'] ?></td>
                 <td><?= $news['created_at'] ?></td>
                 <td>
-                    <a href="edit.php?id=<?= $news['id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
+                    <a href="edit.php?controller=news&action=edit&id=<?= $news['id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
                     <a href="delete.php?controller=news&action=delete&id=<?= $news['id'] ?>"
                        class="btn btn-danger btn-sm" onclick="return confirm('Bạn chắc chắn muốn xóa tin này?')">Xóa</a>
                 </td>
