@@ -24,7 +24,8 @@ class News {
         if (empty($keyword)) {
             return [];  // Nếu không có từ khóa, trả về mảng rỗng
         }
-        $query = "SELECT * FROM news WHERE title LIKE :keyword OR content LIKE :keyword";
+        $query = "SELECT n.*, c.name AS category_name FROM news n
+                LEFT JOIN categories c ON n.category_id = c.id WHERE title LIKE :keyword OR content LIKE :keyword";
         $stmt = $db->prepare($query);
         $stmt->bindValue(':keyword', '%' . $keyword . '%');
         $stmt->execute();
@@ -37,12 +38,20 @@ class News {
 //        return $stmt->execute([$title, $content, $image, $category_id]);
 //    }
 //
-//    public static function delete($id) {
-//        $db = Database::connect();
-//        $query = "DELETE FROM news WHERE id = :id";
-//        $stmt = $db->prepare($query);
-//        $stmt->bindValue(':id', $id);
-//        return $stmt->execute();
-//    }
+    public static function delete($id) {
+        $db = Database::connect();
+        $query = "DELETE FROM news WHERE id = :id";
+        $stmt = $db->prepare($query);
+        $stmt->bindValue(':id', $id);
+        return $stmt->execute();
+    }
+
+    public static function create($title, $content, $image, $category_id) {
+        $db = Database::connect();
+        $stmt = $db->prepare("INSERT INTO news (title, content, image, created_at, category_id) VALUES (?, ?, ?, NOW(), ?)");
+        return $stmt->execute([$title, $content, $image, $category_id]);
+    }
+
+
 }
 ?>
