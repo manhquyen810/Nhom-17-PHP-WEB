@@ -1,4 +1,3 @@
-<!-- views/admin/news/add.php -->
 <!DOCTYPE html>
 <html lang="vi">
 <head>
