@@ -4,6 +4,11 @@ require_once './models/News.php';
 
 // Lấy tất cả tin tức từ database
 $newsList = News::getAll();
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +22,6 @@ $newsList = News::getAll();
 <div class="container mt-5">
     <h1 class="text-center">Quản lý tin tức</h1>
 
-    <!-- Các liên kết thêm tin tức và quay lại -->
     <div class="mb-3">
         <a href="index.php?controller=news&action=create" class="btn btn-primary">Thêm tin tức</a>
         <a href="index.php?controller=admin&action=dashboard" class="btn btn-secondary text-end">Quay
@@ -27,7 +31,6 @@ $newsList = News::getAll();
 
 
 
-    <!-- Bảng hiển thị tin tức -->
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
@@ -50,7 +53,8 @@ $newsList = News::getAll();
                 <td>
                     <a href="edit.php?id=<?= $news['id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
                     <a href="delete.php?controller=news&action=delete&id=<?= $news['id'] ?>"
-                    class="btn btn-danger btn-sm" onclick="return confirm('Bạn chắc chắn muốn xóa tin này?')">Xóa</a> 
+                       class="btn btn-danger btn-sm" onclick="return confirm('Bạn chắc chắn muốn xóa tin này?')">Xóa</a>
+                </td>
             </tr>
         <?php endforeach; ?>
         </tbody>
